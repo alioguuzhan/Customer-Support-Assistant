@@ -6,15 +6,25 @@ Projede kullanılacak veri seti belirli senaryoları içerecek şekilde sentetik
 
 Veri setinde müşteri destek alanında yaygın görülen senaryolar:
 -Teslimat gecikmesi (delivery delay)
+
 -Hasarlı ürün (damaged item)
+
 -Yanlış ürün gönderimi (wrong item)
+
 -Çifte ücretlendirme (double charge)
+
 -İade / geri ödeme durumu (refund status)
+
 -Abonelik iptali (cancel subscription)
+
 -Hesaba giriş sorunu (login issue)
+
 -Şifre sıfırlama sorunu (password reset)
+
 -İnternet bağlantısında kopma (internet drops)
+
 -Uygulama çökmesi (app crash)
+
 
 Her senaryo için birden fazla müşteri cümle şablonu ve birden fazla destek yanıt şablonu hazırlanmıştır. Böylece model aynı problemi farklı ifade ediliş biçimleriyle görmüş ve genelleme yeteneğini arttıracak örnek çeşitliliğini elde etmiştir. Cevap tarafında da sadece "özür dileriz" gibi genel ifadeler değil, gerekli ise müşteri bilgisini isteme gerekli ise adım adım yönlendirme yapma, gerekli ise iade/geri ödeme süresi gibi süreç bilgisini verme gibi müşteri destek akışına uygun içerikler üretilmiştir. 
 
@@ -22,7 +32,7 @@ MODEL SEÇİMİ
 
 Bu projede base model olarak instruct uyumlu, küçük/orta ölçekli bir LLM olan Qwen2.5-3B Instruct tercih edilmiştir. Bu model seçimi hem müşteri destek türünde diyalog üretimine uygun olması hem de Colab GPU üzerinde LoRA ile pratik sürelerde fine-tune edebilmesi açısından uygundur.
 
-Fine-tune yöntemi olarak SFT (Supervised Fine-Tuning) tercih edilmiştir. SFT yaklaşımında model, her eğitim örneğinde verilen müşteri mesajına karşılık veri setinde bulunan "doğru" destek yanıtını öğrenir. Böylece model eğitim verisindeki format ve alan bilgisini kendi üretimlerine yansıtabilir.
+Fine-tune yöntemi olarak "Unsloth-Ai" resmi internet sayfası üzerinden elde edilen notebook ile SFT (Supervised Fine-Tuning) tercih edilmiştir. Unsloth-Ai sayesinde Google Colab üzerinden arayüz yardımıyla fine-tune işlemleri gerçekleştirildi. SFT yaklaşımında model, her eğitim örneğinde verilen müşteri mesajına karşılık veri setinde bulunan "doğru" destek yanıtını öğrenir. Böylece model eğitim verisindeki format ve alan bilgisini kendi üretimlerine yansıtabilir.
 
 Bu projede tam model güncellemesi yerine LoRA (Low-Rank Adaptation) kullanılmıştır. LoRA modelin tüm ağırlıklarını güncelemek yerine belirli katmanlara küçük düşük-rank adaptasyon ağırlıkları ekleyerek eğitim yapar. Bu yöntem eğitimi hızlandırmak ve kaynak tüketimini azalatmak için etkilidir. 
 
