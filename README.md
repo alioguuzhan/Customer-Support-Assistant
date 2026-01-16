@@ -50,3 +50,6 @@ Bununla birlikte çıktıların bir kısmında tekrar eden nezaket cümleleri ("
 
 ### Account Login Issue Example
 ![Login issue example](img/login_issue.png)
+
+
+### Modeli arayüz üzerinde kullanmak için main.ipynb dosyasındaki kodlar sırasıyla çalıştırılmalıdır.
